@@ -153,6 +153,7 @@ export const raw_user_group_schema = z.object({
 export const channel_folder_schema = z.object({
     id: z.number(),
     name: z.string(),
+    description: z.string(),
     rendered_description: z.string(),
     creator_id: z.nullable(z.number()),
     date_created: z.number(),
@@ -425,6 +426,7 @@ export const realm_schema = z.object({
     realm_presence_disabled: z.boolean(),
     realm_push_notifications_enabled: z.boolean(),
     realm_push_notifications_enabled_end_timestamp: z.nullable(z.number()),
+    realm_require_e2ee_push_notifications: z.boolean(),
     realm_require_unique_names: z.boolean(),
     realm_send_welcome_emails: z.boolean(),
     realm_signup_announcements_stream_id: z.number(),

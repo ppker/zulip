@@ -13,6 +13,64 @@
 
     /* Changed from 1.75 to make text easier to read. */
     --sl-line-height: 1.5;
+
+    /* User circles */
+    /* stylelint-disable color-no-hex */
+    --color-user-circle-active: light-dark(#43a35e, #4cdc75);
+    --color-user-circle-idle: light-dark(#f5b266, #ae640a);
+    --color-user-circle-offline: light-dark(#c1c6d7, #454854);
+    --color-user-circle-deactivated: hsl(0deg 0% 50%);
+    /* stylelint-enable color-no-hex */
+
+    /* NOTE: These colors are also used in zulip web app for banner
+       colors. Do grep for these variables when changing them and
+       confirm on CZO on whether the colors there need to change as
+       well. */
+    /* Banners - Neutral Variant */
+    --color-text-neutral-banner: light-dark(
+        hsl(229deg 12% 25%),
+        hsl(231deg 11% 76%)
+    );
+    --color-border-neutral-banner: light-dark(
+        color-mix(in oklch, hsl(240deg 2% 30%) 40%, transparent),
+        color-mix(in oklch, hsl(240deg 7% 66%) 40%, transparent)
+    );
+    --color-background-neutral-banner: light-dark(
+        hsl(240deg 7% 93%),
+        hsl(240deg 7% 17%)
+    );
+    /* Banners - Brand Variant */
+    --color-text-brand-banner: light-dark(
+        hsl(264deg 95% 34%),
+        hsl(244deg 96% 82%)
+    );
+    --color-border-brand-banner: light-dark(
+        color-mix(in oklch, hsl(254deg 60% 50%) 40%, transparent),
+        color-mix(in oklch, hsl(253deg 70% 89%) 40%, transparent)
+    );
+    --color-background-brand-banner: light-dark(
+        hsl(254deg 42% 94%),
+        hsl(253deg 49% 16%)
+    );
+    /* Banners - Info Variant */
+    --color-text-info-banner: light-dark(
+        hsl(241deg 95% 25%),
+        hsl(221deg 93% 89%)
+    );
+    --color-border-info-banner: light-dark(
+        color-mix(in oklch, hsl(204deg 49% 29%) 40%, transparent),
+        color-mix(in oklch, hsl(205deg 58% 69%) 40%, transparent)
+    );
+    --color-background-info-banner: light-dark(
+        hsl(204deg 58% 92%),
+        hsl(204deg 100% 12%)
+    );
+
+    /* Keyboard shortcuts */
+    --color-keyboard-shortcuts: light-dark(
+        hsl(225deg 57.09% 42.9%),
+        hsl(225deg 100% 84%)
+    );
 }
 
 .non-clickable-sidebar-heading {
@@ -65,6 +123,24 @@
     margin-right: 4px;
 }
 
+.starlight-aside--tip {
+    --sl-color-asides-text-accent: var(--color-text-brand-banner);
+    --sl-color-asides-border: var(--color-border-brand-banner);
+    background-color: var(--color-background-brand-banner);
+}
+
+.starlight-aside--note {
+    --sl-color-asides-text-accent: var(--color-text-neutral-banner);
+    --sl-color-asides-border: var(--color-border-neutral-banner);
+    background-color: var(--color-background-neutral-banner);
+}
+
+.keyboard-tip {
+    --sl-color-asides-text-accent: var(--color-text-info-banner);
+    --sl-color-asides-border: var(--color-border-info-banner);
+    background-color: var(--color-background-info-banner);
+}
+
 .aside-icon-lightbulb {
     /* We need to make the fill transparent for the bulb to look hollow
        and the default vertical-align of text-bottom was not looking
@@ -78,6 +154,28 @@
     /* Using any of the default vertical-align did not give desired
        results, text-top + this margin looked the best. */
     margin-top: 2px;
+}
+
+.user-circle {
+    font-size: 0.7em;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.user-circle-active {
+    color: var(--color-user-circle-active);
+}
+
+.user-circle-idle {
+    color: var(--color-user-circle-idle);
+}
+
+.user-circle-offline {
+    color: var(--color-user-circle-offline);
+}
+
+.user-circle-deactivated {
+    color: var(--color-user-circle-deactivated);
 }
 
 .sl-markdown-content {
@@ -130,26 +228,16 @@
     }
 
     & kbd {
-        /* Same as kbd in app_components.css */
-        display: inline-block;
-        border: 1px solid hsl(0deg 0% 80%);
-        border-radius: 4px;
-        font-weight: 600;
+        font-size: 1.2em;
+        padding: 0.15em 0.4em 0.05em;
+        border: 1px solid var(--color-keyboard-shortcuts);
+        border-radius: 3px;
+        color: var(--color-keyboard-shortcuts);
+        text-align: center;
         white-space: nowrap;
-        background-color: hsl(0deg 0% 98%);
-        color: hsl(0deg 0% 20%);
-        text-shadow: 0 1px 0 hsl(0deg 0% 100%);
-        /* Different from app_components.css */
-        /* Removed margin setting */
-        font-size: 0.85em;
-        padding: 0 0.4em;
-
-        &.arrow-key {
-            /* Same as in informational_overlays.css */
-            line-height: 1;
-            padding: 0 0.2em 0.2em;
-            /* Different from informational_overlays.css */
-            font-size: 1.2em;
-        }
     }
+}
+
+footer {
+    font-size: 0.85em;
 }

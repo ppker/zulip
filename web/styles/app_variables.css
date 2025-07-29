@@ -1927,6 +1927,9 @@
     );
     --color-icons-inbox: light-dark(hsl(0deg 0% 0%), hsl(0deg 0% 100%));
     --color-folder-header: light-dark(hsl(216deg 43% 20%), hsl(216deg 50% 75%));
+    /* Light mode uses the --grey-600 equivalent;
+       dark mode uses the --grey-300 equivalent. */
+    --color-inbox-row-chevron: light-dark(#535663, #aaadba);
 
     /* Navbar dropdown menu constants - Values from Figma design */
     --box-shadow-popover-menu:
@@ -2547,6 +2550,10 @@
     );
 
     /* Banners */
+    /* NOTE: These colors are also used in starlight help center for
+       aside colors. Do grep for these variable when changing them
+       and confirm on CZO on whether the colors there need to change
+       as well. */
     --color-text-link-banner: hsl(210deg 94% 42%);
     /* Banners - Neutral Variant */
     --color-text-neutral-banner: light-dark(
